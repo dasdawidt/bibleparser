@@ -53,16 +53,4 @@ abstract class BibleParser {
         br.close();
         return translation;
     }
-
-    public static void main(String[] args) {
-        File file = new File("C:\\Users\\David\\OneDrive\\Ablage\\Bibeln\\extrahiert\\glo\\books.txt");
-        Translation translation;
-        try {
-            translation = BibleParser.parse(file);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
-        System.out.println(translation);
-    }
 }
