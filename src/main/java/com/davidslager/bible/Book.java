@@ -3,7 +3,7 @@ package com.davidslager.bible;
 import java.util.ArrayList;
 
 public class Book {
-    private int number;
+    private BookType type;
     private String abbreviation;
     private String name;
     private ArrayList<Chapter> chapters = new ArrayList<>();
@@ -11,7 +11,7 @@ public class Book {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("[Book %s]\t%s\t(%s)", number, name, abbreviation));
+        sb.append(String.format("[Book %s]\t%s\t(%s)", type, name, abbreviation));
         for (Chapter chapter : chapters) {
             sb.append("\n");
             sb.append(chapter.toString());
@@ -19,12 +19,12 @@ public class Book {
         return sb.toString();
     }
 
-    public int getNumber() {
-        return number;
+    public BookType getType() {
+        return type;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setType(BookType type) {
+        this.type = type;
     }
 
     public String getAbbreviation() {
