@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 abstract class BibleParser {
@@ -28,8 +29,9 @@ abstract class BibleParser {
                         BookTypeOldTestament.valueOf(typeNumber),
                         BookTypeNewTestament.valueOf(typeNumber)
                     )
-                        .findFirst().get()
-                        .orElse(null);
+                        .filter(Optional::isPresent)
+                        .findFirst()
+                        .get().orElse(null);
                 book.setType(type);
                 line = line.substring(4); // remove three digit chapter number
                 book.setName(extractBookName(line));
